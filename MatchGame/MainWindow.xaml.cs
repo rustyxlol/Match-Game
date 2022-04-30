@@ -25,11 +25,13 @@ namespace MatchGame
         DispatcherTimer timer = new DispatcherTimer();
         int tenthsOfSeconds;
         int matchesFound;
+        float bestTime = 99999999/10F;
+        float currentTime;
         public MainWindow()
         {
             InitializeComponent();
-
-            timer.Interval = TimeSpan.FromSeconds(0.1);
+            highScoreTextBlock.Text = "Highscore: None";
+            timer.Interval = TimeSpan.FromSeconds(0.01);
             timer.Tick += Timer_Tick;
 
             SetupGame();
@@ -38,11 +40,17 @@ namespace MatchGame
         private void Timer_Tick(object sender, EventArgs e)
         {
             tenthsOfSeconds++;
-            timeTextBlock.Text = (tenthsOfSeconds/10F).ToString("0.0s");
+            currentTime = tenthsOfSeconds / 100F;
+            timeTextBlock.Text = currentTime.ToString("0.00s");
             if (matchesFound == 8)
             {
+                if (currentTime < bestTime)
+                {
+                    bestTime = currentTime;
+                }
                 timer.Stop();
                 timeTextBlock.Text = timeTextBlock.Text + " - Play again";
+                highScoreTextBlock.Text = "Highscore: " + bestTime.ToString("0.00s");
             }
         }
 
@@ -61,10 +69,9 @@ namespace MatchGame
             };
 
             Random random = new Random();
-
             foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
             {
-                if (textBlock.Name != "timeTextBlock")
+                if (textBlock.Name != "timeTextBlock" && textBlock.Name != "highScoreTextBlock")
                 {
                     textBlock.Visibility = Visibility.Visible;
                     int index = random.Next(animalEmojis.Count);
@@ -76,7 +83,6 @@ namespace MatchGame
             timer.Start();
             tenthsOfSeconds = 0;
             matchesFound = 0;
-
         }
 
 

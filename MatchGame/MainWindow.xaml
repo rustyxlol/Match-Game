@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MatchGame"
         mc:Ignorable="d"
-        Title="Animal Matching" Height="450" Width="400">
+        Title="Animal Matching" Height="490" Width="400">
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,6 +14,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -41,6 +42,7 @@
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2" FontSize="36" MouseDown="TextBlock_MouseDown"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3" FontSize="36" MouseDown="TextBlock_MouseDown"/>
         <TextBlock x:Name="timeTextBlock" HorizontalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="32" MouseDown="TimeTextBlock_MouseDown"/>
+        <TextBlock x:Name="highScoreTextBlock" HorizontalAlignment="Center" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="22"/>
 
     </Grid>
 </Window>
