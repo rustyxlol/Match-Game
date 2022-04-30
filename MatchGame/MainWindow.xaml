@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:MatchGame"
         mc:Ignorable="d"
         Title="Animal Matching" Height="450" Width="400">
-    <Grid>
+    <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -21,35 +22,42 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="36"/>
+        
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="0" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4" FontSize="36"/>
-        
-        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" FontSize="36"/>
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="1" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" FontSize="36"/>
-        
-        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" FontSize="36"/>
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="2" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="2" Grid.Row="3" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="2" Grid.Row="4" FontSize="36"/>
 
-        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="3" Grid.Row="4" FontSize="36"/>
 
-        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="4" Grid.Row="0" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="4" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="4" Grid.Row="1" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="4" Grid.Row="2" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="4" Grid.Row="3" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="4" Grid.Row="4" FontSize="36"/>
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="5" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="5" Grid.Row="1" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="5" Grid.Row="2" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="5" Grid.Row="3" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="?" VerticalAlignment="Center" Grid.Column="5" Grid.Row="4" FontSize="36"/>
 
 
     </Grid>

@@ -29,7 +29,38 @@ namespace MatchGame
 
         private void SetupGame()
         {
-            throw new NotImplementedException();
+            List<string> animalEmojis = new List<string>()
+            {
+                "🐍", "🐍",
+                "🐸", "🐸",
+                "🦊", "🦊",
+                "🦁", "🦁",
+                "🦝", "🦝",
+                "🦄", "🦄",
+                "🐔", "🐔",
+                "🐲", "🐲",
+                "🐫", "🐫",
+                "🐰", "🐰",
+                "🐟", "🐟",
+                "🦅", "🦅",
+                "🐦", "🐦",
+                "🦋", "🦋",
+                "🐞", "🐞",
+                "🕷", "🕷",
+                "🦀", "🦀",
+                "🐙", "🐙",
+            };
+
+            Random random = new Random();
+
+            foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
+            {
+                int index = random.Next(animalEmojis.Count);
+                string nextEmoji = animalEmojis[index];
+                textBlock.Text = nextEmoji;
+                animalEmojis.RemoveAt(index);
+            }
+
         }
     }
 }
