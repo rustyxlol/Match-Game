@@ -18,13 +18,32 @@ namespace MatchGame
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    using System.Windows.Threading;
+
     public partial class MainWindow : Window
     {
+        DispatcherTimer timer = new DispatcherTimer();
+        int tenthsOfSeconds;
+        int matchesFound;
         public MainWindow()
         {
             InitializeComponent();
 
+            timer.Interval = TimeSpan.FromSeconds(0.1);
+            timer.Tick += Timer_Tick;
+
             SetupGame();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            tenthsOfSeconds++;
+            timeTextBlock.Text = (tenthsOfSeconds/10F).ToString("0.0s");
+            if (matchesFound == 8)
+            {
+                timer.Stop();
+                timeTextBlock.Text = timeTextBlock.Text + " - Play again";
+            }
         }
 
         private void SetupGame()
@@ -33,30 +52,30 @@ namespace MatchGame
             {
                 "🐍", "🐍",
                 "🐸", "🐸",
-                "🦊", "🦊",
-                "🦝", "🦝",
                 "🐔", "🐔",
-                "🐲", "🐲",
-                "🐫", "🐫",
                 "🐰", "🐰",
-                "🐟", "🐟",
                 "🦅", "🦅",
-                "🐦", "🐦",
                 "🦋", "🦋",
                 "🐞", "🐞",
                 "🕷", "🕷",
-                "🐙", "🐙",
             };
 
             Random random = new Random();
 
             foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
             {
-                int index = random.Next(animalEmojis.Count);
-                string nextEmoji = animalEmojis[index];
-                textBlock.Text = nextEmoji;
-                animalEmojis.RemoveAt(index);
+                if (textBlock.Name != "timeTextBlock")
+                {
+                    textBlock.Visibility = Visibility.Visible;
+                    int index = random.Next(animalEmojis.Count);
+                    string nextEmoji = animalEmojis[index];
+                    textBlock.Text = nextEmoji;
+                    animalEmojis.RemoveAt(index);
+                }
             }
+            timer.Start();
+            tenthsOfSeconds = 0;
+            matchesFound = 0;
 
         }
 
@@ -76,12 +95,22 @@ namespace MatchGame
             else if (lastBlockClicked.Text == textBlock.Text)
             {
                 textBlock.Visibility = Visibility.Hidden;
+                matchesFound++;
                 findingMatch = false;
             }
             else
             {
                 lastBlockClicked.Visibility = Visibility.Visible;
                 findingMatch = false;
+            }
+        }
+
+
+        private void TimeTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (matchesFound == 8)
+            {
+                SetupGame();
             }
         }
     }
