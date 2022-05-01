@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 namespace MatchGame
 {
+    using System.Media;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -22,19 +24,26 @@ namespace MatchGame
 
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Normal);
         int tenthsOfSeconds;
         int matchesFound;
         float bestTime = 99999999/10F;
         float currentTime;
+        SoundPlayer matchSound = new SoundPlayer("../../../assets/Match.wav");
+        SoundPlayer gameFinishSound = new SoundPlayer("../../../assets/Finish.wav");
+        SoundPlayer missMatchSound = new SoundPlayer("../../../assets/MissMatch.wav");
+        SoundPlayer newHighScoreSound = new SoundPlayer("../../../assets/wow.wav");
+        SoundPlayer startGameSound = new SoundPlayer("../../../assets/StartGame.wav");
+        SoundPlayer welcomeSound = new SoundPlayer("../../../assets/welcome.wav");
         public MainWindow()
         {
+            welcomeSound.Load();
+            welcomeSound.Play();
             InitializeComponent();
-            highScoreTextBlock.Text = "Highscore: None";
+
+            highScoreTextBlock.Text = "";
             timer.Interval = TimeSpan.FromSeconds(0.01);
             timer.Tick += Timer_Tick;
-
-            SetupGame();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -46,16 +55,22 @@ namespace MatchGame
             {
                 if (currentTime < bestTime)
                 {
+                    newHighScoreSound.Play();
                     bestTime = currentTime;
                 }
                 timer.Stop();
-                timeTextBlock.Text = timeTextBlock.Text + " - Play again";
+                timeTextBlock.Text = timeTextBlock.Text;
                 highScoreTextBlock.Text = "Highscore: " + bestTime.ToString("0.00s");
             }
         }
 
         private void SetupGame()
         {
+
+            newHighScoreSound.Load();
+            matchSound.Load();
+            gameFinishSound.Load();
+            missMatchSound.Load();
             List<string> animalEmojis = new List<string>()
             {
                 "🐍", "🐍",
@@ -100,6 +115,8 @@ namespace MatchGame
             }
             else if (lastBlockClicked.Text == textBlock.Text)
             {
+
+                matchSound.Play();
                 textBlock.Visibility = Visibility.Hidden;
                 matchesFound++;
                 findingMatch = false;
@@ -108,15 +125,27 @@ namespace MatchGame
             {
                 lastBlockClicked.Visibility = Visibility.Visible;
                 findingMatch = false;
+                missMatchSound.Play();
             }
+            if(matchesFound == 8)
+            {
+                playagainBtn.Visibility = Visibility.Visible;
+                gameFinishSound.Play();
+            }
+        }       
+        private void startBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            startGameSound.Play();
+            SetupGame();
+            startBtn.Visibility = Visibility.Hidden;
         }
 
-
-        private void TimeTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        private void playagainBtn_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (matchesFound == 8)
+            if(matchesFound == 8)
             {
                 SetupGame();
+                playagainBtn.Visibility = Visibility.Hidden;
             }
         }
     }
